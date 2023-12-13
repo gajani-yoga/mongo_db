@@ -9,10 +9,23 @@ app.use(cors())
 app.use(express.json())
 app.use(logger('dev'))
 
+//Routes --> will refactor later
+app.get('/articles', (req, res) => {
+    res.json({mssg: 'GET all artiles'})
+})
 
-//Connect to db
-mongoose.connect(process.env.MONG_URI)  //asynchronous code --> returns a promise
-    .then(() => {})
-    .catch((error) => {
-        console.log(error)
-    })
+app.get('/articles/:id', (req, res) => {
+    res.json({mssg: 'GET a single article'})
+})
+
+app.post('/articles', (req, res) => {
+    res.json({mssg: 'POST a new article'})
+})
+
+app.delete('/articles/:id', (req, res) => {
+    res.json({mssg: 'DELETE a article'})
+})
+
+app.patch('/articles/:id', (req, res) => {
+    res.json({mssg: 'UPDATE a single article'})
+})
