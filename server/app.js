@@ -1,17 +1,18 @@
-const mongoose = require('mongoose')
+const express = require('express')
+const cors = require('cors')
+const logger = require('morgan')
 
-const articleSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: [true, "An article must have a title"],
-    unique: true
-  },
-  body: {
-    type:  String,
-    required: [true, "You can't have an empty article"]
-  }
-})
+const app = express()
 
-const Article = mongoose.model('Post', articleSchema)
+//Middleware
+app.use(cors())
+app.use(express.json())
+app.use(logger('dev'))
 
-module.exports = Article
+
+//Connect to db
+mongoose.connect(process.env.MONG_URI)  //asynchronous code --> returns a promise
+    .then(() => {})
+    .catch((error) => {
+        console.log(error)
+    })
