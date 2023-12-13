@@ -19,6 +19,7 @@ app.get('/articles/:id', (req, res) => {
 })
 
 app.post('/articles', (req, res) => {
+    const {title, body} = req.body
     res.json({mssg: 'POST a new article'})
 })
 

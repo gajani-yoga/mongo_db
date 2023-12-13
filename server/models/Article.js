@@ -5,16 +5,13 @@ const Schema = mongoose.Schema
 const articleSchema = new Schema({
     title: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
-    reps: {
-        type: Number,
+    body: {
+        type: String,
         required: true
-    },
-    load: {
-        type: Number,
-        required: true
-    }
+    }   
 }, { timestamps: true })
 
 module.exports = mongoose.model('Article', articleSchema)   //Workouts collection will be created
